@@ -1,5 +1,15 @@
 {% extends "base.html" %}
+{% block head %}
+{% endblock %}
 {% block title %} View Data {% endblock %}
 {% block body %}
-
+<div style="display: flex; justify-content: center;">
+  {% for list in images %}
+  <div style="display: flex; flex-direction: column;">
+      {% for image in list %}
+          <img src="{{image}}" width="250" height="250" style="margin: 10px;">
+      {% endfor %}
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}
