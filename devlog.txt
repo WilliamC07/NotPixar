@@ -1,0 +1,4 @@
+William Cao 2020-5-29 17:32
+- Wrote outline for design document (what technology used, description of project, roles)
+- Assigned tasks to be finished by 2020-6-1 (on outline)
+
