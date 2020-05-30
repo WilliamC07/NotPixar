@@ -19,8 +19,29 @@ def home():
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdhQCbLnGyjN8528xlVPSpirT6dB-dtOOiZ3hbSZIsfrcY6gEu&usqp=CAU",
         "https://www.solidbackgrounds.com/images/2560x1440/2560x1440-gray-solid-color-background.jpg"
     ]]
-
     return render_template("home.html", images=images)
+
+@app.route("create-account", methods=["POST", "GET"])
+def create_account():
+    return render_template("create-account.html")
+
+@app.route("login", methods=["POST", "GET"])
+def login():
+    return render_template("login.html")
+
+@app.route("create-art", methods=["GET"])
+def create():
+    return render_template("create-art.html")
+
+@app.route("/view-art/<string:id>", methods=["GET"])
+def art(id: str):
+    return render_template("view-art.html")
+
+@app.route("/profile/<string:username>", methods=["GET"])
+def user(username: str):
+    return render_template("profile.html")
+
+
 
 
 if __name__ == "__main__":
