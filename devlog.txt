@@ -2,6 +2,9 @@ William Cao 2020-5-29 17:32
 - Wrote outline for design document (what technology used, description of project, roles)
 - Assigned tasks to be finished by 2020-6-1 (on outline)
 
-William Cao 2020--30 18:21
+Ethan Chen 2020-5-29 20:45
+- Wrote home.html such that it shows a layout of images along with a navigation bar
+
+William Cao 2020-5-30 18:21
 - Created sitemap and listed how to interact with the api routes
 - Created remaining blank html files
