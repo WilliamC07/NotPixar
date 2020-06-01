@@ -35,10 +35,10 @@
       </li>
     </ul>
     <span class="navbar-text">
-      <a class="nav-link pr-0" href="#"><button class="btn btn-light">Sign In</button></a>
+      <a class="nav-link pr-0" href="{{ url_for('login') }}"><button class="btn btn-light">Sign In</button></a>
     </span>
     <span class="navbar-text">
-      <a class="nav-link" href="#"><button class="btn btn-success pl-4 pr-4">Sign Up</button></a>
+      <a class="nav-link" href="{{ url_for('create_account') }}"><button class="btn btn-success pl-4 pr-4">Sign Up</button></a>
     </span>
   </div>
   </nav>
