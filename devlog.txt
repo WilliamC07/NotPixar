@@ -8,3 +8,6 @@ Ethan Chen 2020-5-29 20:45
 William Cao 2020-5-30 18:21
 - Created sitemap and listed how to interact with the api routes
 - Created remaining blank html files
+
+Joseph Yusufov 2020-06-01 10:00
+- Pushed create-art code, including a template.
