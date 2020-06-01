@@ -11,3 +11,6 @@ William Cao 2020-5-30 18:21
 
 Joseph Yusufov 2020-06-01 10:00
 - Pushed create-art code, including a template.
+
+William Cao 2020-6-1 14:13
+- Created login system and wrote tests for it (from last assignment)
