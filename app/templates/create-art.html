@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="
+    text-align: center;
+">
+    <button id="color-red">Red</button>
+    <button id="color-green">Green</button>
+    <button id="color-blue">Blue</button>
+    <button id="color-white">White</button>
+    <button id="color-black">Black</button>
+    <span id="color-indicator" style="border: 1px solid black; padding: 50px; background-color: #000000; display: inline-block; margin: 10px;">.</span>
+    <button id="clear-canvas">Clear</button>
+    <button id="draw">Draw</button>
+    <br>
+    <canvas id="artCanvas" width="625" height="625"></canvas>
+</div>
+<script src='./static/js/create-art.js'></script>
+
+{% endblock %}

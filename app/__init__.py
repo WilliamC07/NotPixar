@@ -21,15 +21,15 @@ def home():
     ]]
     return render_template("home.html", images=images)
 
-@app.route("create-account", methods=["POST", "GET"])
+@app.route("/create-account", methods=["POST", "GET"])
 def create_account():
     return render_template("create-account.html")
 
-@app.route("login", methods=["POST", "GET"])
+@app.route("/login", methods=["POST", "GET"])
 def login():
     return render_template("login.html")
 
-@app.route("create-art", methods=["GET"])
+@app.route("/create-art", methods=["GET"])
 def create():
     return render_template("create-art.html")
 
