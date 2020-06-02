@@ -1,9 +1,11 @@
 from flask import Flask, session, render_template, redirect, url_for, request, flash
 from data import database_query
 import os, random
+from api import api
 
 app = Flask(__name__)
 app.secret_key = "NotPixar"
+app.register_blueprint(api, url_prefix='/api')
 
 @app.route("/")
 def home():

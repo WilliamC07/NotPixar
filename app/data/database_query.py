@@ -1,4 +1,5 @@
-from data import login_collection
+from data import login_collection, image_collection
+from bson import ObjectId
 
 def is_valid_login(username: str, password: str) -> bool:
     return login_collection.find_one({"username": username, "password": password}) is not None
@@ -10,3 +11,12 @@ def does_username_exist(username: str) -> bool:
 
 def create_account(username: str, password: str):
     login_collection.insert_one({"username": username, "password": password})
+
+
+def store_image(title: str, ppm: str, username: str) -> str:
+    return str(image_collection.insert_one({
+        "title": title,
+        "creator": username,
+        "image": ppm,
+        "likes": 0
+    }).inserted_id)

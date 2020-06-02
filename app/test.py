@@ -62,6 +62,18 @@ class Test(unittest.TestCase):
                 # make sure session knows you are logged in
                 self.assertFalse("username" in session)
 
+    def test_create_art(self):
+        username = "username123"
+        password = "password123"
+        self.create_account(username, password)
+        self.login(username, password)
+
+        response = self.app.post("/api/image/create", json={
+            "title": "test art 123",
+            "ppm": "P3 3 2 255 255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0"
+        })
+        art_id = json.loads(response.get_data(as_text=True))["id"]
+
 
 if __name__ == "__main__":
     unittest.main()
