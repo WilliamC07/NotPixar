@@ -18,3 +18,7 @@ William Cao 2020-6-1 14:13
 Ethan Chen 2020-6-1 15:39
 - Designed the login and create-account pages using imgur as a frame of reference
 - is blue a viable color scheme?
+
+William Cao 2020-6-1 23:48
+- Can store and retrieve images backend. Wrote test cases as well.
+- I am not able to convert a ppm string to a png, need to continue working on this
