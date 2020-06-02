@@ -62,6 +62,32 @@ class Test(unittest.TestCase):
                 # make sure session knows you are logged in
                 self.assertFalse("username" in session)
 
+    def test_create_art(self):
+        username = "username123"
+        password = "password123"
+        self.create_account(username, password)
+        self.login(username, password)
+
+        image_details = {
+            "title": "test art 123",
+            "image": "P3 3 2 255 255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0"
+        }
+
+        response = self.app.post("/api/image/create", json=image_details)
+        art_id = json.loads(response.get_data(as_text=True))["id"]
+
+        # the server will add these details
+        image_details["creator"] = username
+        image_details["likes"] = 0
+        image_details["comments"] = []
+
+        with captured_templates(app) as templates:
+            self.app.get("/view-art/" + art_id)
+            template, context = templates[0]
+
+            for key, val in image_details.items():
+                self.assertEqual(val, context[key])
+
 
 if __name__ == "__main__":
     unittest.main()

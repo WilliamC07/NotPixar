@@ -14,3 +14,7 @@ Joseph Yusufov 2020-06-01 10:00
 
 William Cao 2020-6-1 14:13
 - Created login system and wrote tests for it (from last assignment)
+
+Ethan Chen 2020-6-1 15:39
+- Designed the login and create-account pages using imgur as a frame of reference
+- is blue a viable color scheme?
