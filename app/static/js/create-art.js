@@ -105,6 +105,13 @@ const submit = () => {
         body: JSON.stringify(requestBody)
     }).then(res => {
         console.log(res);
+        if(res.ok){
+           return res.json();
+        }
+    }).then(artId => {
+        console.log(artId.id);
+        // Simulate an HTTP redirect:
+        window.location.replace("/view-art/" + artId.id);
     });
 }
 const drawFromData = (dataParam, canvasElement) => {
