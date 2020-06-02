@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Account</title>
+    </head>
+    <style>
+    .button {font-family: Verdana, Geneva, sans-serif; margin-top: 8px; width: 350px; background: #3498DB; border-radius: 5px; border: none; color: white; padding: 15px 0px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;}
+    .b5 {background: #E5E8E8; padding: 5px; height: 32px; border-radius: 5px; font-family: Verdana; width: 320px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid transparent;}
+    </style>
+    <body style="background: #5DADE2;">
+        <div style="text-align: center;">
+            <h1 style="color: #D6EAF8; font-family: Verdana, Geneva, sans-serif; font-size: 55px; margin: 85px;">not pixar</h1>
+        </div>
+        {% with errors = get_flashed_messages() %}
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endwith %}
+        <div style="text-align: center;">
+        <form method="GET">
+            <div style="border-radius: 5px; margin: 0px; display: inline-block; background: #AED6F1; width: 320px; height: auto; padding: 15px;">
+            <input class= "b5" type="text" placeholder="Username" name="username">
+            <br>
+            <input class= "b5" type="password" placeholder="Password" name="password">
+            <br>
+            <input class= "b5" type="password" name="password_repeat" placeholder="Retype Password">
+            <br>
+            </div>
+            <br>
+            <input type="submit" class="button" value="Create Account"></input>
+            <br>
+            <a href="{{ url_for('login') }}"<button class="button">Sign In</button></a>
+        </form>
+        </div>
+    </body>
+</html>
