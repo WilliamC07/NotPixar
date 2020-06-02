@@ -80,7 +80,13 @@ def create():
 
 @app.route("/view-art/<string:id>", methods=["GET"])
 def art(id: str):
-    return render_template("view-art.html")
+    image_details = database_query.get_image(id)
+    if image_details is None:
+        flash("Image does not exist!", "danger")
+        return redirect(url_for("home"))
+    return render_template("view-art.html", title=image_details["title"], creator=image_details["creator"],
+                           image=image_details["image"], comments=image_details["comments"],
+                           likes=image_details["likes"])
 
 @app.route("/profile/<string:username>", methods=["GET"])
 def user(username: str):

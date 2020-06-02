@@ -8,8 +8,8 @@ api = Blueprint("api", __name__)
 def api_image_create():
     art_information = request.get_json()
     title = art_information["title"]
-    ppm = art_information["ppm"]
-    art_id = database_query.store_image(title, ppm, session["username"])
+    image = art_information["image"]
+    art_id = database_query.store_image(title, image, session["username"])
     return {
         "id": art_id
     }
