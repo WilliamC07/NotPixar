@@ -27,3 +27,9 @@ Joseph Yusufov 2020-06-02 10:30
 - converted data object into a ppm string, created frontend logic for making a create-artwork
 request to the backend
 
+William Cao 2020-6-2 14:17
+- Work due:
+    Joseph: "view-art" work page, working on scaling image
+    Ethan: Work on styling the "create-art" page
+    William: Handle comments API,
+- Merged branches and removed merging errors
