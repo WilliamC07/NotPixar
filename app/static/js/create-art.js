@@ -1,6 +1,6 @@
-var FILL_COLOR = '#000000';
-var FILL_RGB_ARRAY = [0, 0, 0];
-var data = [];
+let FILL_COLOR = '#000000';
+let FILL_RGB_ARRAY = [0, 0, 0];
+let data = [];
 const initData = () => {
     data = [];
     for (let i = 0; i < 25; i++){
@@ -14,22 +14,8 @@ const initData = () => {
 initData();
 console.log(data);
 const c = document.getElementById('artCanvas');
-document.getElementById('color-red').addEventListener('click', () => {FILL_COLOR = '#ff0000'; setColorIndicator();});
-document.getElementById('color-green').addEventListener('click', () => {FILL_COLOR = '#00ff00'; setColorIndicator();});
-document.getElementById('color-blue').addEventListener('click', () => {FILL_COLOR = '#0000ff'; setColorIndicator();});
-document.getElementById('color-white').addEventListener('click', () => {FILL_COLOR = '#ffffff'; setColorIndicator();});
-document.getElementById('color-black').addEventListener('click', () => {FILL_COLOR = '#000000'; setColorIndicator();});
-document.getElementById('clear-canvas').addEventListener('click', () => {
-    c.getContext('2d').clearRect(0, 0, c.width, c.height);
-    initData();
-    console.log(data);
-    drawGrid(c);
-});
-document.getElementById('draw').addEventListener('click', () => {
-    drawFromData(data ,c);
-});
 
-var setColorIndicator = () => {
+const setColorIndicator = () => {
     function hexToRgb(hex) {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? [
@@ -43,7 +29,7 @@ var setColorIndicator = () => {
     document.getElementById('color-indicator').style.backgroundColor = FILL_COLOR;
 };
 
-var drawGrid = (canvasElement) => {
+const drawGrid = (canvasElement) => {
     var canvasContext = canvasElement.getContext('2d');
     for (i = 0; i < 700; i += 25) {
         canvasContext.moveTo(0, i);
@@ -58,8 +44,8 @@ var drawGrid = (canvasElement) => {
 };
 
 
-var startDrawing = (canvasElement) => {
-    var getMousePosition = (canvas, event) => { 
+const startDrawing = (canvasElement) => {
+    const getMousePosition = (canvas, event) => { 
         let rect = canvas.getBoundingClientRect(); 
         let x = Math.floor((event.clientX - rect.left) / 25); 
         let y = Math.floor((event.clientY - rect.top) / 25); 
@@ -67,7 +53,7 @@ var startDrawing = (canvasElement) => {
                     "Coordinate y: " + y); 
         return [x, y];
     };
-    var fillPixel = (coordinatesArray) => {
+    const fillPixel = (coordinatesArray) => {
         // setting the pixel in the data
         data[coordinatesArray[1]][coordinatesArray[0]] = FILL_RGB_ARRAY;
         console.log(data);
@@ -84,14 +70,30 @@ var startDrawing = (canvasElement) => {
 
 
 function componentToHex(c) {
-    var hex = c.toString(16);
+    const hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 };  
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 };
 
-var drawFromData = (dataParam, canvasElement) => {
+const submit = () => {
+    let requestString = `P3
+25 25
+255
+`;
+    console.log(data);
+    data.map((row) => {
+        row.map((col) => {
+            col.map((rgbValue) => {
+                requestString = requestString.concat(` ${rgbValue}`);
+            });
+        });
+    });
+    // console.log(requestString);
+    // fetch('/')
+}
+const drawFromData = (dataParam, canvasElement) => {
     dataParam.map((row, i) => {
         row.map((col, j) => {
             const context = canvasElement.getContext('2d');
@@ -102,5 +104,22 @@ var drawFromData = (dataParam, canvasElement) => {
         });
     });
 };
+
+document.getElementById('color-red').addEventListener('click', () => {FILL_COLOR = '#ff0000'; setColorIndicator();});
+document.getElementById('color-green').addEventListener('click', () => {FILL_COLOR = '#00ff00'; setColorIndicator();});
+document.getElementById('color-blue').addEventListener('click', () => {FILL_COLOR = '#0000ff'; setColorIndicator();});
+document.getElementById('color-white').addEventListener('click', () => {FILL_COLOR = '#ffffff'; setColorIndicator();});
+document.getElementById('color-black').addEventListener('click', () => {FILL_COLOR = '#000000'; setColorIndicator();});
+document.getElementById('clear-canvas').addEventListener('click', () => {
+    c.getContext('2d').clearRect(0, 0, c.width, c.height);
+    initData();
+    console.log(data);
+    drawGrid(c);
+});
+document.getElementById('draw').addEventListener('click', () => {
+    drawFromData(data ,c);
+});
+document.getElementById('submit').addEventListener('click', submit);
+
 drawGrid(c);
 startDrawing(c);
