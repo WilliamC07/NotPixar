@@ -1,5 +1,6 @@
 let FILL_COLOR = '#000000';
 let FILL_RGB_ARRAY = [0, 0, 0];
+let ARTWORK_TITLE = "";
 let data = [];
 const initData = () => {
     data = [];
@@ -91,7 +92,27 @@ const submit = () => {
         });
     });
     // console.log(requestString);
-    // fetch('/')
+    const requestBody = {
+        title: ARTWORK_TITLE,
+        image: requestString
+    };
+    console.log(requestBody);
+    fetch('/api/image/create', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+    }).then(res => {
+        console.log(res);
+        if(res.ok){
+           return res.json();
+        }
+    }).then(artId => {
+        console.log(artId.id);
+        // Simulate an HTTP redirect:
+        window.location.replace("/view-art/" + artId.id);
+    });
 }
 const drawFromData = (dataParam, canvasElement) => {
     dataParam.map((row, i) => {
@@ -120,6 +141,9 @@ document.getElementById('draw').addEventListener('click', () => {
     drawFromData(data ,c);
 });
 document.getElementById('submit').addEventListener('click', submit);
+document.querySelector('input').addEventListener('change', e => {
+    ARTWORK_TITLE = e.target.value;
+});
 
 drawGrid(c);
 startDrawing(c);
