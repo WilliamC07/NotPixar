@@ -35,6 +35,7 @@
         <a class="nav-link" href="#">Pricing</a>
       </li>
     </ul>
+    {% if 'username' not in session %}
     <span class="navbar-text">
       <a class="nav-link pr-0" href="{{ url_for('login') }}"><button class="btn btn-light">Sign In</button></a>
     </span>
@@ -42,6 +43,15 @@
       <a class="nav-link" href="{{ url_for('create_account') }}"><button
               class="btn btn-success pl-4 pr-4">Sign Up</button></a>
     </span>
+    {% else %}
+    <span class="navbar-text">
+      Welcome {{session['username']}}!
+    </span>
+    <span class="navbar-text">
+      <a class="nav-link" href="{{ url_for('logout') }}"><button
+              class="btn btn-danger pl-4 pr-4">Logout</button></a>
+    </span>
+    {% endif %}
   </div>
 </nav>
 {% block body %}
