@@ -19,6 +19,11 @@ Ethan Chen 2020-6-1 15:39
 - Designed the login and create-account pages using imgur as a frame of reference
 - is blue a viable color scheme?
 
+William Cao 2020-6-1 23:48
+- Can store and retrieve images backend. Wrote test cases as well.
+- I am not able to convert a ppm string to a png, need to continue working on this
+
 Joseph Yusufov 2020-06-02 10:30
 - converted data object into a ppm string, created frontend logic for making a create-artwork
 request to the backend
+
