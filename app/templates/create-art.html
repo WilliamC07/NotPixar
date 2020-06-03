@@ -1,21 +1,29 @@
 {% extends "base.html" %}
 {% block body %}
 <div style="
-    text-align: center;
+    text-align: center; margin: 5px; padding: 5px;
 ">
-    <button id="color-red">Red</button>
-    <button id="color-green">Green</button>
-    <button id="color-blue">Blue</button>
-    <button id="color-white">White</button>
-    <button id="color-black">Black</button>
-    <span id="color-indicator" style="border: 1px solid black; padding: 50px; background-color: #000000; display: inline-block; margin: 10px;">.</span>
-    <button id="clear-canvas">Clear</button>
-    <button id="draw">Draw</button>
+    <br>
+    <br>
+    <input name="title" type="text" placeholder="Title" style="text-align: center; margin-bottom: 10px; width: 320px;">
+    <br>
+    <button class= "btn btn-danger" id="color-red">Red</button>
+    <button class= "btn btn-success" id="color-green">Green</button>
+    <button class= "btn btn-primary" id="color-blue">Blue</button>
+    <button class= "btn btn-light" id="color-white">White</button>
+    <button class= "btn btn-dark" id="color-black" style="margin-right: 160px;">Black</button>
+    <button class= "btn btn-secondary" id="clear-canvas">Clear</button>
+    <button class= "btn btn-secondary" id="draw">Draw</button>
+</div>
+<div style= "text-align: center;">
+    <span id="color-indicator" style="border: 1px solid black; width: 625px; height: 25px; background-color: #000000; display: inline-block; padding:10px; margin:0px;"></span>
     <br>
     <canvas id="artCanvas" width="625" height="625"></canvas> <br>
-    <input name="titile" type="text" placeholder="Enter a title for this artwork">
-    <button id="submit">Create Artwork</button>
+    <button class= "btn btn-info" style="width: 625px;" id="submit">Create Artwork</button>
 </div>
+<br>
+<br>
+<br>
 <script src='./static/js/create-art.js'></script>
 
 {% endblock %}
