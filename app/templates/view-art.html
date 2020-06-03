@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>{{title}}</h1>
+<canvas id="view-canvas" width="625" height="625"></canvas>
+<script>
+    const ppmResponse = `{{image}}`;
+</script>
+<script type="module" src='../static/js/view-art.js'></script>
+{% endblock %}
