@@ -34,3 +34,8 @@ def get_image(id: str) -> Dict:
     # don't need to send _id since the frontend already knows it (in url)
     del image_details["_id"]
     return image_details
+
+def add_comment(art_id: str, content: str, username: str):
+    image_collection.find_one_and_update(
+        {"_id": ObjectId(art_id)},
+        {"$push": {"comments": {"username": username, "content": content}}})
