@@ -27,6 +27,10 @@ Joseph Yusufov 2020-06-02 10:30
 - converted data object into a ppm string, created frontend logic for making a create-artwork
 request to the backend
 
+Ethan Chen 2020-6-2 12:05
+-added alerts to all pages, hardcoded the css for the login pages bc they do not use bootstrap
+-fixed the navbar such that it only shows the sign up buttons when not logged in else shows log out
+
 William Cao 2020-6-2 14:17
 - Work due:
     Joseph: "view-art" work page, working on scaling image
@@ -36,3 +40,11 @@ William Cao 2020-6-2 14:17
 
 Joseph Yusufov 2020-06-03 11:30
 - wrote a function to draw a canvas at a certain scale given a ppm string
+
+Ethan Chen 2020-6-3 13:29
+-styled the create-art page to my liking
+-still trying to decide the color scheme of the website. might change the login pages to fit accordingly.
+
+William Cao 2020-6-3 13:45
+- Can store art work comments and wrote tests
+- Set up github actions for automatically run tests on backend code
