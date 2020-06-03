@@ -41,3 +41,7 @@ William Cao 2020-6-2 14:17
 Ethan Chen 2020-6-3 13:29
 -styled the create-art page to my liking
 -still trying to decide the color scheme of the website. might change the login pages to fit accordingly.
+
+William Cao 2020-6-3 13:45
+- Can store art work comments and wrote tests
+- Set up github actions for automatically run tests on backend code
