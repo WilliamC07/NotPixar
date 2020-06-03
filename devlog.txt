@@ -33,3 +33,6 @@ William Cao 2020-6-2 14:17
     Ethan: Work on styling the "create-art" page
     William: Handle comments API,
 - Merged branches and removed merging errors
+
+Joseph Yusufov 2020-06-03 11:30
+- wrote a function to draw a canvas at a certain scale given a ppm string
