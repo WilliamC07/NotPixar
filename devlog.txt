@@ -48,3 +48,6 @@ Ethan Chen 2020-6-3 13:29
 William Cao 2020-6-3 13:45
 - Can store art work comments and wrote tests
 - Set up github actions for automatically run tests on backend code
+
+Joseph Yusufov 2020-06-03 10:30
+- Validated title field (cannot be empty)

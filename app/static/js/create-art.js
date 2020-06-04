@@ -92,28 +92,39 @@ const submit = () => {
         });
     });
     // console.log(requestString);
-    const requestBody = {
-        title: ARTWORK_TITLE,
-        image: requestString
+    if(ARTWORK_TITLE !== ""){
+        const requestBody = {
+            title: ARTWORK_TITLE,
+            image: requestString
+        };
+        console.log(requestBody);
+        fetch('/api/image/create', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody)
+        }).then(res => {
+            console.log(res);
+            if(res.ok){
+               return res.json();
+            }
+        }).then(artId => {
+            console.log(artId.id);
+            // Simulate an HTTP redirect:
+            window.location.replace("/view-art/" + artId.id);
+        });
+    } else {
+        const title = document.getElementById('title');
+        const alert = document.getElementById('js-alert');
+        title.style.border = "1px solid red";
+        title.placeholder = "Please enter a title";
+        alert.innerHTML = "Please enter a title";
+        alert.style.display = "block";
+
+        window.scrollTo(0, 0);
     };
-    console.log(requestBody);
-    fetch('/api/image/create', {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody)
-    }).then(res => {
-        console.log(res);
-        if(res.ok){
-           return res.json();
-        }
-    }).then(artId => {
-        console.log(artId.id);
-        // Simulate an HTTP redirect:
-        window.location.replace("/view-art/" + artId.id);
-    });
-}
+};
 const drawFromData = (dataParam, canvasElement) => {
     dataParam.map((row, i) => {
         row.map((col, j) => {
@@ -137,11 +148,8 @@ document.getElementById('clear-canvas').addEventListener('click', () => {
     console.log(data);
     drawGrid(c);
 });
-document.getElementById('draw').addEventListener('click', () => {
-    drawFromData(data ,c);
-});
 document.getElementById('submit').addEventListener('click', submit);
-document.querySelector('input').addEventListener('change', e => {
+document.getElementById('title').addEventListener('change', e => {
     ARTWORK_TITLE = e.target.value;
 });
 
