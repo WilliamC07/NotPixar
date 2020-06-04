@@ -51,3 +51,7 @@ William Cao 2020-6-3 13:45
 
 Joseph Yusufov 2020-06-03 10:30
 - Validated title field (cannot be empty)
+
+Joseph Yusufov 2020-06-03 11:30
+- Added functionality that allows for user to resize their pixel art
+- Added redirect to login screen if the user attempts to create art when not logged in
