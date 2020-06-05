@@ -1,0 +1,30 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* width: 90%; */
+    margin: 0px 30px;
+}
+.image-container{
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+.image-container:hover{
+    transition: 0.25s;
+    background: #00000008;
+}
+.creator{
+    color: #00000080;
+}
+.divider{
+    display: none;
+}
+@media only screen and (max-width: 800px) {
+    .grid-container{
+        grid-template-columns: 1fr;
+    }
+    .divider{
+        display: block;
+    }
+}

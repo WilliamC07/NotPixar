@@ -9,9 +9,16 @@ LOGIN_COLLECTION
 
 IMAGE_COLLECTION
 {
-    username: string,
-    title: string,
-    ppm: string,
+    "title": title,
+    "creator": username,
+    "image": image,
+    "likes": 0,
+    "comments": [
+        {
+            "username": string,
+            "content": string
+        }
+    ]
 }
 
 """

@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block head %}
+<link rel="stylesheet" href="./static/css/homeStyles.css">
 {% endblock %}
 {% block title %} View Data {% endblock %}
 {% block body %}
 <script>
-  const ppmResponse = `{{image}}`;
+  const images = `{{images|tojson()}}`;
 </script>
 
 <br>
 <br>
-<div style="display: flex; justify-content: center;">
+<!-- <div style="display: flex; justify-content: center;">
   {% for list in images %}
   <div style="display: flex; flex-direction: column;">
       {% for image in list %}
@@ -17,5 +18,19 @@
       {% endfor %}
   </div>
   {% endfor %}
+</div> -->
+<div class="grid-container">
+  {% for image in images %}
+  <div>
+    <div class="image-container" id="image-container-{{loop.index-1}}">
+      <h2>{{image.title}}</h2>
+      <h4 class="creator">{{image.creator}}</h4>
+      <canvas id="preview-{{loop.index-1}}"></canvas>
+    </div>
+    <hr class="divider">
+  </div>
+  {% endfor %}
 </div>
+
+<script type="module" src='./static/js/home.js'></script>
 {% endblock %}

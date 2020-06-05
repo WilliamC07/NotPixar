@@ -1,6 +1,6 @@
 from data import login_collection, image_collection
 from bson import ObjectId
-from typing import Dict
+from typing import Dict, List
 
 def is_valid_login(username: str, password: str) -> bool:
     return login_collection.find_one({"username": username, "password": password}) is not None
@@ -39,3 +39,12 @@ def add_comment(art_id: str, content: str, username: str):
     image_collection.find_one_and_update(
         {"_id": ObjectId(art_id)},
         {"$push": {"comments": {"username": username, "content": content}}})
+
+def get_all_art() -> List:
+    images = list(image_collection.find({}))
+    for image in images:
+        image["art_id"] = str(image["_id"])
+        del image["_id"]
+        image["num_comments"] = len(image["comments"])
+        del image["comments"]
+    return images
