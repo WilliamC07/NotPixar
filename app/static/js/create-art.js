@@ -85,10 +85,7 @@ function rgbToHex(r, g, b) {
 };
 
 const submit = () => {
-    let requestString = `P3
-${GRID_SIZE} ${GRID_SIZE}
-255
-`;
+    let requestString = `P3 ${GRID_SIZE} ${GRID_SIZE} 255`;
     console.log(data);
     data.map((row) => {
         row.map((col) => {
