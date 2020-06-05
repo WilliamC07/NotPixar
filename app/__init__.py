@@ -76,7 +76,11 @@ def logout():
 
 @app.route("/create-art", methods=["GET"])
 def create():
-    return render_template("create-art.html")
+    if session:
+        return render_template("create-art.html")
+    else:
+        flash("Login or create an account to begin drawing", "success")
+        return redirect(url_for("login"))
 
 @app.route("/view-art/<string:id>", methods=["GET"])
 def art(id: str):

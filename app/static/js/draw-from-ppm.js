@@ -13,7 +13,7 @@ export function drawFromPpm (scale, ppmString, canvasId){
     const finalArray = segmentArray(rgbClusters, squareSize);
     console.log(finalArray);
 
-    drawFromData(finalArray, scale, 'view-canvas')
+    drawFromData(finalArray, scale, canvasId)
 
 };
 
@@ -59,7 +59,11 @@ function RGBToHex(r,g,b) {
   };
 
 const drawFromData = (dataParam, scale, canvasId) => {
-    document.getElementById(canvasId).style.border = '1px solid black';
+    const canvas = document.getElementById(canvasId);
+    canvas.style.border = '1px solid black';
+    canvas.width = dataParam.length * scale;
+    canvas.height = dataParam.length * scale;
+
     console.log(dataParam);
     dataParam.map((row, i) => {
         row.map((col, j) => {
