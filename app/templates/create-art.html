@@ -1,11 +1,25 @@
 {% extends "base.html" %}
 {% block body %}
 <div style="
-    text-align: center; margin: 5px; padding: 5px;
+    text-align: center; 
+    margin: 5px; 
+    padding: 5px;
 ">
+    <div id="js-alert" class="alert alert-danger" style="display: none;" role="alert">
+        
+    </div>
     <br>
     <br>
-    <input name="title" type="text" placeholder="Title" style="text-align: center; margin-bottom: 10px; width: 320px;">
+    <input id="title" name="title" type="text" placeholder="Title" style="text-align: center; margin-bottom: 10px; width: 320px;">
+    <br>
+    <span>Select a grid size</span>
+    <select id="grid-size-select" class=" form-control form-control-sm" style="display: inline; width: 250px; margin: auto;">
+        <option value="8">8 x 8</option>
+        <option value="15">15 x 15</option>
+        <option value="25" selected="selected">25 x 25</option>
+        <option value="35">35 x 35</option>
+    </select>
+    <br>
     <br>
     <button class= "btn btn-danger" id="color-red">Red</button>
     <button class= "btn btn-success" id="color-green">Green</button>
@@ -13,7 +27,6 @@
     <button class= "btn btn-light" id="color-white">White</button>
     <button class= "btn btn-dark" id="color-black" style="margin-right: 160px;">Black</button>
     <button class= "btn btn-secondary" id="clear-canvas">Clear</button>
-    <button class= "btn btn-secondary" id="draw">Draw</button>
 </div>
 <div style= "text-align: center;">
     <span id="color-indicator" style="border: 1px solid black; width: 625px; height: 25px; background-color: #000000; display: inline-block; padding:10px; margin:0px;"></span>

@@ -1,12 +1,13 @@
 let FILL_COLOR = '#000000';
 let FILL_RGB_ARRAY = [0, 0, 0];
 let ARTWORK_TITLE = "";
+let GRID_SIZE = 25;
 let data = [];
 const initData = () => {
     data = [];
-    for (let i = 0; i < 25; i++){
+    for (let i = 0; i < GRID_SIZE; i++){
         let row = []
-        for (let j = 0; j < 25; j++){
+        for (let j = 0; j < GRID_SIZE; j++){
             row.push([255, 255, 255]);
         };
         data.push(row);
@@ -31,13 +32,18 @@ const setColorIndicator = () => {
 };
 
 const drawGrid = (canvasElement) => {
+    initData();
+    console.log(data);
+    canvasElement.width = 25 * GRID_SIZE;
+    canvasElement.height = 25 * GRID_SIZE;
     var canvasContext = canvasElement.getContext('2d');
-    for (i = 0; i < 700; i += 25) {
+    canvasContext.clearRect(0, 0, c.width, c.height);
+    for (i = 0; i < (GRID_SIZE * 25 + 2); i += 25) {
         canvasContext.moveTo(0, i);
         canvasContext.lineTo(c.width, i);
         canvasContext.stroke();
     };
-    for (i = 0; i < 700; i += 25) {
+    for (i = 0; i < (GRID_SIZE * 25 + 2); i += 25) {
         canvasContext.moveTo(i, 0);
         canvasContext.lineTo(i,c.width);
         canvasContext.stroke();
@@ -80,7 +86,7 @@ function rgbToHex(r, g, b) {
 
 const submit = () => {
     let requestString = `P3
-25 25
+${GRID_SIZE} ${GRID_SIZE}
 255
 `;
     console.log(data);
@@ -92,28 +98,39 @@ const submit = () => {
         });
     });
     // console.log(requestString);
-    const requestBody = {
-        title: ARTWORK_TITLE,
-        image: requestString
+    if(ARTWORK_TITLE !== ""){
+        const requestBody = {
+            title: ARTWORK_TITLE,
+            image: requestString
+        };
+        console.log(requestBody);
+        fetch('/api/image/create', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody)
+        }).then(res => {
+            console.log(res);
+            if(res.ok){
+               return res.json();
+            }
+        }).then(artId => {
+            console.log(artId.id);
+            // Simulate an HTTP redirect:
+            window.location.replace("/view-art/" + artId.id);
+        });
+    } else {
+        const title = document.getElementById('title');
+        const alert = document.getElementById('js-alert');
+        title.style.border = "1px solid red";
+        title.placeholder = "Please enter a title";
+        alert.innerHTML = "Please enter a title";
+        alert.style.display = "block";
+
+        window.scrollTo(0, 0);
     };
-    console.log(requestBody);
-    fetch('/api/image/create', {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody)
-    }).then(res => {
-        console.log(res);
-        if(res.ok){
-           return res.json();
-        }
-    }).then(artId => {
-        console.log(artId.id);
-        // Simulate an HTTP redirect:
-        window.location.replace("/view-art/" + artId.id);
-    });
-}
+};
 const drawFromData = (dataParam, canvasElement) => {
     dataParam.map((row, i) => {
         row.map((col, j) => {
@@ -132,17 +149,17 @@ document.getElementById('color-blue').addEventListener('click', () => {FILL_COLO
 document.getElementById('color-white').addEventListener('click', () => {FILL_COLOR = '#ffffff'; setColorIndicator();});
 document.getElementById('color-black').addEventListener('click', () => {FILL_COLOR = '#000000'; setColorIndicator();});
 document.getElementById('clear-canvas').addEventListener('click', () => {
-    c.getContext('2d').clearRect(0, 0, c.width, c.height);
-    initData();
-    console.log(data);
+    // initData();
+    // console.log(data);
     drawGrid(c);
 });
-document.getElementById('draw').addEventListener('click', () => {
-    drawFromData(data ,c);
-});
 document.getElementById('submit').addEventListener('click', submit);
-document.querySelector('input').addEventListener('change', e => {
+document.getElementById('title').addEventListener('change', e => {
     ARTWORK_TITLE = e.target.value;
+});
+document.getElementById('grid-size-select').addEventListener('change', e => {
+    GRID_SIZE = e.target.value;
+    drawGrid(c);
 });
 
 drawGrid(c);
