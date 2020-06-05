@@ -12,7 +12,7 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
                         {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}" role="alert">
+                        <div class="alert alert-{{ category }}" role="alert" style="margin:0px; border-radius:0px;">
                           {{ message }}
                         </div>
                         {% endfor %}
@@ -25,9 +25,9 @@
 
   <title>{% block title %} {% endblock %}</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">NotPixar</a>
+<body style="background-color: #EAEDED;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #AED6F1;">
+  <a class="navbar-brand pr-2" href="#">NotPixar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
           aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -39,9 +39,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('create') }}">Draw</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
       </li>
     </ul>
     {% if 'username' not in session %}
