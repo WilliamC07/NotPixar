@@ -55,3 +55,6 @@ Joseph Yusufov 2020-06-03 10:30
 Joseph Yusufov 2020-06-03 11:30
 - Added functionality that allows for user to resize their pixel art
 - Added redirect to login screen if the user attempts to create art when not logged in
+
+Ethan Chen 2020-6-5 14:04
+-styled the view-art page such that it contains a comment section
