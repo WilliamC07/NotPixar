@@ -58,3 +58,7 @@ Joseph Yusufov 2020-06-03 11:30
 
 Joseph Yusufov 2020-06-05 11:30
 - Homepage now responsively renders artworks based on the size of the artwork and the size of the screen.
+
+Ethan Chen 2020-6-5 14:04
+-styled the view-art page such that it contains a comment section
+
