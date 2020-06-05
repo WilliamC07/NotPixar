@@ -62,3 +62,7 @@ Joseph Yusufov 2020-06-05 11:30
 Ethan Chen 2020-6-5 14:04
 -styled the view-art page such that it contains a comment section
 
+Ethan Chen 2020-6-5 16:04
+-styled home page to fit color scheme
+-changed nav bar to have the pixar background color and removed pricing
+-fixed margin on create art page
