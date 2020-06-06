@@ -12,9 +12,8 @@ body {background-color: #E5E8E8;}
       <div style="display: inline-block; width: 650px; height:auto; background-color:white; padding:10px;">
           <h1>{{title}}</h1>
           <canvas id="view-canvas" width="625" height="625"></canvas>
-          <form method="post" id="commentform">
-            <input class="b5" style="width: 625px; margin-top: 5px; margin-bottom: 5px;" type="text" name="comment" id="comment" placeholder="Write a comment...">
-          </form>
+          <input class="b5" style="width: 75%; margin-top: 5px; margin-bottom: 5px;" type="text" name="comment" id="comment" placeholder="Write a comment...">
+          <button id="submit" class="btn btn-primary" style="margin-left: 10px;">Submit</button>
           {% for comment in comments_demo %}
                 <div style="width: 625px; height: auto; text-align: left; margin: 5px;">
                     <b>{{comment['username']}}:</b> {{comment['content']}}

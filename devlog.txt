@@ -66,3 +66,7 @@ Ethan Chen 2020-6-5 16:04
 -styled home page to fit color scheme
 -changed nav bar to have the pixar background color and removed pricing
 -fixed margin on create art page
+
+Joseph Yusufov 2020-06-06 09:45
+- resize canvas on view page such that no matter the grid size, the canvas will be
+625px by 625px
