@@ -75,3 +75,6 @@ Joseph Yusufov 2020-06-06 10:30
 - implemented comment front-end such that when the user submits a comment, only the 
 comment container DOM element is updated, as opposed to the entire page being refreshed.
 This is an instance where usage of a framework like React would have been nice.
+
+William Cao 2020-06-07 0:29
+- Use sqlite3 over mongo to fit project requirement
