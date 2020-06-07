@@ -9,7 +9,7 @@ app.register_blueprint(api, url_prefix='/api')
 
 @app.route("/")
 def home():
-    images = database_query.get_all_art()
+    images = database_query.get_all_art(session["username"])
     return render_template("home.html", images=images)
 
 @app.route("/create-account", methods=["POST", "GET"])
@@ -71,14 +71,11 @@ def create():
 
 @app.route("/view-art/<string:id>", methods=["GET"])
 def art(id: str):
-    image_details = database_query.get_image(id)
-    comments_demo = [ {'username': "ethan", 'content': "looking snaggilicious"},{'username': "william", 'content': "dope!"}]
+    image_details = database_query.get_image(id, session["username"])
     if image_details is None:
         flash("Image does not exist!", "danger")
         return redirect(url_for("home"))
-    return render_template("view-art.html", title=image_details["title"], creator=image_details["creator"],
-                           image=image_details["image"], comments=image_details["comments"], comments_demo = comments_demo,
-                           likes=image_details["likes"])
+    return render_template("view-art.html", **image_details)
 
 @app.route("/profile/<string:username>", methods=["GET"])
 def user(username: str):

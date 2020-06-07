@@ -24,3 +24,12 @@ def api_comment_create():
     content = comment_information["content"]
     database_query.add_comment(art_id, content, session["username"])
     return ""
+
+@api.route("/<string:id>/like", methods=["POST"])
+def api_image_like(id: str):
+    if database_query.did_user_like(session["username"], id):
+        # unlike
+        database_query.unlike_artwork(id, session["username"])
+    else:
+        database_query.like_artwork(id, session["username"])
+    return "", 200

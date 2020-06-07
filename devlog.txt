@@ -78,3 +78,4 @@ This is an instance where usage of a framework like React would have been nice.
 
 William Cao 2020-06-07 0:29
 - Use sqlite3 over mongo to fit project requirement
+- Added backend for liking and disliking an art
