@@ -25,3 +25,8 @@ def api_comment_create():
     content = comment_information["content"]
     database_query.add_comment(art_id, content, session["username"])
     return ""
+
+# @api.route("/session/get", methods=["GET"])
+# def get_session():
+#     if 'username' not in session:
+#         return 
