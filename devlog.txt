@@ -70,3 +70,8 @@ Ethan Chen 2020-6-5 16:04
 Joseph Yusufov 2020-06-06 09:45
 - resize canvas on view page such that no matter the grid size, the canvas will be
 625px by 625px
+
+Joseph Yusufov 2020-06-06 10:30
+- implemented comment front-end such that when the user submits a comment, only the 
+comment container DOM element is updated, as opposed to the entire page being refreshed.
+This is an instance where usage of a framework like React would have been nice.

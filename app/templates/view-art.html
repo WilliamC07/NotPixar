@@ -14,11 +14,15 @@ body {background-color: #E5E8E8;}
           <canvas id="view-canvas" width="625" height="625"></canvas>
           <input class="b5" style="width: 75%; margin-top: 5px; margin-bottom: 5px;" type="text" name="comment" id="comment" placeholder="Write a comment...">
           <button id="submit" class="btn btn-primary" style="margin-left: 10px;">Submit</button>
-          {% for comment in comments_demo %}
+          <div style="display: none;" class="alert alert-success" id="comment-alert" role="alert">Your comment has been shared.</div>
+            <div id="comments-container">
+
+                {% for comment in comments %}
                 <div style="width: 625px; height: auto; text-align: left; margin: 5px;">
                     <b>{{comment['username']}}:</b> {{comment['content']}}
                 </div>
-          {% endfor %}
+                {% endfor %}
+            </div>
       </div>
 </div>
 <br>
