@@ -1,15 +1,55 @@
-from data import mongo_client, database, login_collection, DATABASE_NAME
+from data import cursor, table_names
+import sqlite3
+
+def create_users_table():
+    cursor.execute('''
+    CREATE TABLE users(
+        username TEXT NOT NULL unique,
+        password TEXT
+    )
+    ''')
+
+def create_art_table():
+    cursor.execute('''
+    CREATE TABLE arts(
+        id INTEGER PRIMARY KEY,
+        title TEXT,
+        creator TEXT,
+        likes INTEGER,
+        image TEXT,
+        FOREIGN KEY(creator) REFERENCES users(username)
+    )
+    ''')
+
+def create_comment_table():
+    cursor.execute('''
+    CREATE TABLE comments(
+        username TEXT,
+        content TEXT,
+        artID INTEGER,
+        FOREIGN KEY(username) REFERENCES users(username),
+        FOREIGN KEY(artID) REFERENCES arts(id)
+    )
+    ''')
 
 def create_admin_account():
-    login_collection.insert_one({
-        "username": "admin",
-        "password": "admin"
-    })
+    cursor.execute('''
+    INSERT INTO users VALUES(
+        'admin',
+        'admin' 
+    )
+    ''')
 
 
 def recreate_database():
-    # Drop the mongo database if it exists
-    if DATABASE_NAME in mongo_client.list_database_names():
-        mongo_client.drop_database(DATABASE_NAME)
+    # Clear all the tables
+    statement = "DROP TABLE IF EXISTS "
+    for table_name in table_names:
+        cursor.execute(statement + table_name)
+
+    # recreate the tables
+    create_users_table()
+    create_art_table()
+    create_comment_table()
 
     create_admin_account()
