@@ -75,3 +75,7 @@ Joseph Yusufov 2020-06-06 10:30
 - implemented comment front-end such that when the user submits a comment, only the 
 comment container DOM element is updated, as opposed to the entire page being refreshed.
 This is an instance where usage of a framework like React would have been nice.
+
+Joseph Yusufov 2020-06-07 09:45
+- Comment can be submitted upon enter key, if one tries to leave a comment without being
+logged in they will be redirected to the login page.
