@@ -36,6 +36,7 @@ const submit = () => {
                 alert.innerHTML = "Your comment has been shared.";
                 alert.classList.add('alert-success');
                 alert.style.display = 'block';
+                imput.value = "";
                 setTimeout(() => {
                     alert.style.display = 'none';
                     alert.classList.remove('alert-success');

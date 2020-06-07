@@ -31,6 +31,12 @@
   </div>
   {% endfor %}
 </div>
+{% if images|length == 0 %}
+<div class="text-center">
+  <h1>There's currently no artwork to display &#x1F97A</h1>
+  <a href="/create-art"><h3>Click to Start Drawing</h3></a>
+</div>
+{% endif %}
 
 <script type="module" src='./static/js/home.js'></script>
 {% endblock %}
