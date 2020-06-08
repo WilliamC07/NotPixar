@@ -12,11 +12,13 @@ body {background-color: #E5E8E8;}
       <div style="display: inline-block; width: 650px; height:auto; background-color:white; padding:10px;">
           <h1>{{title}}</h1>
           <canvas id="view-canvas" width="625" height="625"></canvas>
-          <input class="b5" style="width: 75%; margin-top: 5px; margin-bottom: 5px;" type="text" name="comment" id="comment" placeholder="Write a comment...">
-          <button id="submit" class="btn btn-primary" style="margin-left: 10px;">Submit</button>
+          <div>
+            <button type="button" class="btn btn-outline-primary" style="width: 627px; margin-bottom: 3px;">Like</button>
+          </div>
+          <input class="b5" style="width: 85%; margin-top: 3px; margin-bottom: 5px; height: 38px;" type="text" name="comment" id="comment" placeholder="Write a comment...">
+          <button id="submit" class="btn btn-primary" style="margin-left: 10px; margin-bottom: 4px;">Submit</button>
           <div style="display: none;" class="alert alert-success" id="comment-alert" role="alert">Your comment has been shared.</div>
             <div id="comments-container">
-
                 {% for comment in comments %}
                 <div style="width: 625px; height: auto; text-align: left; margin: 5px;">
                     <b>{{comment['username']}}:</b> {{comment['content']}}
