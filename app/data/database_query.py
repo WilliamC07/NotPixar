@@ -25,14 +25,10 @@ def store_image(title: str, image: str, username: str) -> str:
 def get_image(id: str, username: str) -> Dict:
     cursor.execute("SELECT title, creator, image FROM arts WHERE id = ?", (id,))
     data = cursor.fetchone()
-<<<<<<< HEAD
     if data is None:
         return None
-=======
     cursor.execute("SELECT COUNT(*) FROM likes where artID = ?", (int(id),))
     likes = int(cursor.fetchone()[0])
-
->>>>>>> e49051a559aed12ac2e3fe80ac2d6eafeb82e397
     image = {
         "title": data[0],
         "creator": data[1],
