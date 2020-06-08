@@ -26,6 +26,8 @@ def store_image(title: str, image: str, username: str) -> str:
 def get_image(id: str) -> Dict:
     cursor.execute("SELECT title, creator, likes, image FROM arts WHERE id = ?", (id,))
     data = cursor.fetchone()
+    if data is None:
+        return None
     image = {
         "title": data[0],
         "creator": data[1],

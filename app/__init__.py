@@ -72,6 +72,9 @@ def create():
 @app.route("/view-art/<string:id>", methods=["GET"])
 def art(id: str):
     image_details = database_query.get_image(id)
+    if image_details is None:
+        flash("Art does not exist!", "danger")
+        return redirect(url_for("home"))
     comments_demo = [ {'username': "ethan", 'content': "looking snaggilicious"},{'username': "william", 'content': "dope!"}]
     if image_details is None:
         flash("Image does not exist!", "danger")
