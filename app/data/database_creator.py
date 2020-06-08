@@ -15,7 +15,6 @@ def create_art_table():
         id INTEGER PRIMARY KEY,
         title TEXT,
         creator TEXT,
-        likes INTEGER,
         image TEXT,
         FOREIGN KEY(creator) REFERENCES users(username)
     )
@@ -32,6 +31,16 @@ def create_comment_table():
     )
     ''')
 
+def create_like_table():
+    cursor.execute('''
+    CREATE TABLE likes(
+        username text,
+        artID INTEGER,
+        FOREIGN KEY(username) REFERENCES users(username),
+        FOREIGN KEY(artID) REFERENCES arts(id)
+    )
+    ''')
+
 def create_admin_account():
     cursor.execute('''
     INSERT INTO users VALUES(
@@ -39,7 +48,6 @@ def create_admin_account():
         'admin' 
     )
     ''')
-
 
 def recreate_database():
     # Clear all the tables
@@ -51,5 +59,6 @@ def recreate_database():
     create_users_table()
     create_art_table()
     create_comment_table()
+    create_like_table()
 
     create_admin_account()

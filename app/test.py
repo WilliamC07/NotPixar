@@ -123,6 +123,50 @@ class Test(unittest.TestCase):
                 "username": username
             }, context["comments"][0])
 
+    def test_likes(self):
+        username = "artowner"
+        password = "artowner"
+        self.create_account(username, password)
+        self.login(username, password)
+
+        image_details = {
+            "title": "test art 123",
+            "image": "P3 3 2 255 255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0"
+        }
+
+        response = self.app.post("/api/image/create", json=image_details)
+        art_id = json.loads(response.get_data(as_text=True))["id"]
+
+        # the server will add these details
+        image_details["creator"] = username
+        image_details["likes"] = 0
+
+        self.logout()
+
+        username = "liker"
+        password = "liker"
+        self.create_account(username, password)
+        self.login(username, password)
+
+        self.app.post(f"/api/{art_id}/like")
+        with captured_templates(app) as templates:
+            self.app.get("/view-art/" + art_id)
+            template, context = templates[0]
+
+            self.assertEqual(1, context["likes"])
+            self.assertTrue(context["hasLiked"])
+
+        #unlike
+        self.app.post(f"/api/{art_id}/like")
+        with captured_templates(app) as templates:
+            self.app.get("/view-art/" + art_id)
+            template, context = templates[0]
+
+            self.assertEqual(0, context["likes"])
+            print(context)
+            self.assertFalse(context["hasLiked"])
+
+
 
 if __name__ == "__main__":
     unittest.main()
