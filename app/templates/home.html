@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block head %}
 <link rel="stylesheet" href="./static/css/homeStyles.css">
+<style>
+body {background-color: #2471A3 !important;}
+</style>
 {% endblock %}
 {% block title %} View Data {% endblock %}
 {% block body %}
@@ -10,26 +13,21 @@
 
 <br>
 <br>
-<!-- <div style="display: flex; justify-content: center;">
-  {% for list in images %}
-  <div style="display: flex; flex-direction: column;">
-      {% for image in list %}
-          <img src="{{image}}" width="250" height="250" style="margin: 10px;">
-      {% endfor %}
-  </div>
-  {% endfor %}
-</div> -->
-<div class="grid-container">
-  {% for image in images %}
-  <div>
-    <div class="image-container" id="image-container-{{loop.index-1}}">
-      <h2>{{image.title}}</h2>
-      <h4 class="creator">{{image.creator}}</h4>
-      <canvas id="preview-{{loop.index-1}}"></canvas>
+<div style="text-align: center;">
+    <div style = "display: inline-block">
+        <div class="grid-container" style="grid-template-columns: 0fr 0fr 0fr;">
+          {% for image in images %}
+          <div style="background-color: #EAEDED; margin: 5px; border-radius: 5px; width: 280px;">
+            <div class="image-container" id="image-container-{{loop.index-1}}">
+              <h2 style="color: black; margin-bottom: 0px;">{{image.title}}</h2>
+              <h1 class="creator" style="font-size: 12px;">by {{image.creator}}</h1>
+              <canvas id="preview-{{loop.index-1}}"></canvas>
+            </div>
+            <hr class="divider">
+          </div>
+          {% endfor %}
+        </div>
     </div>
-    <hr class="divider">
-  </div>
-  {% endfor %}
 </div>
 {% if images|length == 0 %}
 <div class="text-center">
