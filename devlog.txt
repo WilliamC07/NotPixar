@@ -83,3 +83,7 @@ William Cao 2020-06-07 0:29
 Joseph Yusufov 2020-06-07 09:45
 - Comment can be submitted upon enter key, if one tries to leave a comment without being
 logged in they will be redirected to the login page.
+
+Ethan Chen 2020-6-8 15:19
+-added likes and a like button to the homepage and view art page
+-joseph is not satisfied with the color scheme/am planning to experiment with different colors
