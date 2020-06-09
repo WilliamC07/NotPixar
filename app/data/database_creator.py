@@ -1,5 +1,4 @@
 from data import cursor, table_names
-import sqlite3
 
 def create_users_table():
     cursor.execute('''

@@ -1,10 +1,11 @@
 import unittest
-from __init__ import app
-from data import database_creator
 import json
-from flask import template_rendered
 from contextlib import contextmanager
-import pprint
+
+from flask import template_rendered
+
+from data import database_creator
+from __init__ import app
 
 @contextmanager
 def captured_templates(app):

@@ -1,5 +1,6 @@
-from data import cursor
 from typing import Dict, List
+
+from data import cursor
 
 def is_valid_login(username: str, password: str) -> bool:
     cursor.execute("SELECT username FROM users WHERE username = ? AND password = ?", (username, password))

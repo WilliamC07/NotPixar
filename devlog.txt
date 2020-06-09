@@ -90,3 +90,6 @@ Ethan Chen 2020-6-8 15:19
 
 Joseph Yusufov 2020-06-09 11:00
 - Updated design document with SQL database design diagram
+
+William Cao 2020-06-09 13:01
+- Fixed import styling (issue #20)
