@@ -98,3 +98,9 @@ William Cao 2020-06-09 13:01
 
 Joseph Yusufov 2020-06-09 15:00
 - Implemented like button on view-art page.
+
+Ethan Chen 2020-06-09 15:02
+- Removed the like button if user is not in session
+- Added link to view artist profile on view art page
+- copied profile page from home page
+- added back to home on login system
