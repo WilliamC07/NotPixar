@@ -63,7 +63,7 @@ def logout():
 
 @app.route("/create-art", methods=["GET"])
 def create():
-    if session:
+    if "username" in session:
         return render_template("create-art.html")
     else:
         flash("Login or create an account to begin drawing", "success")
@@ -71,7 +71,7 @@ def create():
 
 @app.route("/view-art/<string:id>", methods=["GET"])
 def art(id: str):
-    image_details = database_query.get_image(id, session["username"])
+    image_details = database_query.get_image(id, session.get("username"))
     if image_details is None:
         flash("Image does not exist!", "danger")
         return redirect(url_for("home"))
@@ -79,7 +79,18 @@ def art(id: str):
 
 @app.route("/profile/<string:username>", methods=["GET"])
 def user(username: str):
-    return render_template("profile.html")
+    all_art = database_query.get_all_art(session.get("username"))
+    user_arts = []
+    # filter out to only those of the selected profile
+    for user_art in all_art:
+        if user_art["creator"] == username:
+            user_arts.append(user_art)
+
+    if len(user_arts) == 0:
+        flash("User does not exist!", "danger")
+        return redirect(url_for("home"))
+
+    return render_template("profile.html", username=username, images=user_arts)
 
 
 if __name__ == "__main__":

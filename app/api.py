@@ -27,6 +27,8 @@ def api_comment_create():
 
 @api.route("/<string:id>/like", methods=["POST"])
 def api_image_like(id: str):
+    if "username" not in session:
+        return "", 403
     if database_query.did_user_like(session["username"], id):
         # unlike
         database_query.unlike_artwork(id, session["username"])
