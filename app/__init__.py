@@ -9,7 +9,7 @@ app.register_blueprint(api, url_prefix='/api')
 
 @app.route("/")
 def home():
-    images = database_query.get_all_art(session["username"])
+    images = database_query.get_all_art(session.get("username"))
     return render_template("home.html", images=images)
 
 @app.route("/create-account", methods=["POST", "GET"])
