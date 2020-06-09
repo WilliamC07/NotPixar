@@ -94,3 +94,4 @@ Joseph Yusufov 2020-06-09 11:00
 William Cao 2020-06-09 13:01
 - Fixed import styling (issue #20)
 - Wrote backend code for viewing user's profile to see art work and wrote tests for this
+- Wrote launch codes
