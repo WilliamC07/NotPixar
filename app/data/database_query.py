@@ -24,6 +24,9 @@ def store_image(title: str, image: str, username: str) -> str:
     return str(cursor.lastrowid)
 
 def get_image(id: str, username: str) -> Dict:
+    if username is None:
+        username = ""
+
     cursor.execute("SELECT title, creator, image FROM arts WHERE id = ?", (id,))
     data = cursor.fetchone()
     if data is None:
@@ -47,6 +50,8 @@ def get_image(id: str, username: str) -> Dict:
     return image
 
 def did_user_like(username: str, art_id: str):
+    if username is None:
+        username = ""
     cursor.execute("SELECT * FROM likes WHERE username = ? AND artID = ?", (username, int(art_id)))
     return cursor.fetchone() is not None
 
@@ -58,6 +63,8 @@ def like_artwork(art_id: str, username: str):
 
 def get_all_art(username: str) -> List:
     images = []
+    if username is None:
+        username = ""
 
     cursor.execute("SELECT id, title, creator, image from arts")
     for art in cursor.fetchall():

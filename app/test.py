@@ -167,6 +167,46 @@ class Test(unittest.TestCase):
             print(context)
             self.assertFalse(context["hasLiked"])
 
+    def test_user_profile(self):
+        username = "1"
+        password = "1"
+        self.create_account(username, password)
+        self.login(username, password)
+
+        image_details = {
+            "title": "test art 123",
+            "image": "P3 3 2 255 255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0"
+        }
+
+        response = self.app.post("/api/image/create", json=image_details)
+        art_id_1 = json.loads(response.get_data(as_text=True))["id"]
+
+        self.logout()
+
+        username = "2"
+        password = "2"
+        self.create_account(username, password)
+        self.login(username, password)
+
+        image_details = {
+            "title": "test art 123",
+            "image": "P3 3 2 255 255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0"
+        }
+
+        response = self.app.post("/api/image/create", json=image_details)
+        art_id_2 = json.loads(response.get_data(as_text=True))["id"]
+
+        self.logout()
+
+        with captured_templates(app) as templates:
+            self.app.get("/profile/1")
+            template, context = templates[0]
+
+            art = context["images"][0]
+            self.assertEqual(art["creator"], "1")
+            self.assertEqual(art["art_id"], art_id_1)
+            self.assertEqual(art["likes"], 0)
+            self.assertFalse(art["hasLiked"])
 
 
 if __name__ == "__main__":
