@@ -1,6 +1,8 @@
 import {drawFromPpm} from './draw-from-ppm.js'; 
 console.log(ppmResponse);
 console.log("hello");
+let hasLikedLocal = hasLiked;
+console.log(hasLikedLocal);
 
 const size = ppmResponse.match(/\S+/g)[1];
 console.log(size);
@@ -71,6 +73,34 @@ const submit = () => {
     }
 };
 
+ 
+const id = window.location.pathname.split("/")[2];
+const button = document.getElementById('like');
+if (hasLikedLocal === "True"){
+    button.classList.remove('btn-outline-primary');
+    button.classList.add('btn-primary');
+}
+const counter = document.getElementById('likes-counter');
+const like = () => {
+    console.log(hasLikedLocal);
+    if(hasLikedLocal === 'False'){
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-primary');
+        counter.innerHTML = parseInt(counter.innerHTML + 1);
+        hasLikedLocal = "True";
+    } else {
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-outline-primary');
+        counter.innerHTML = parseInt(counter.innerHTML - 1);
+        hasLikedLocal = "False";
+    };
+    fetch(`/api/${id}/like`, {
+        method: "POST",
+    }).then(res => {
+        console.log(res);
+    })
+};
+
 document.getElementById("comment").addEventListener("keyup", function(event) {
     console.log(event.keyCode);
     if (event.keyCode === 13) {
@@ -78,4 +108,4 @@ document.getElementById("comment").addEventListener("keyup", function(event) {
     }
 });
 document.getElementById("submit").addEventListener('click', submit);
-
+document.getElementById("like").addEventListener('click', like);

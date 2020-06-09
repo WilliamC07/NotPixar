@@ -19,7 +19,7 @@ body {background-color: #2471A3 !important;}
           {% for image in images %}
           <div style="background-color: #EAEDED; margin: 5px; border-radius: 5px; width: 280px; padding-bottom: 10px;">
             <div class="image-container" id="image-container-{{loop.index-1}}" style="padding-bottom: 0px;">
-              <h2 style="color: black; margin-bottom: 0px;">{{image.title}}</h2>
+              <h2 style="color: black; margin-bottom: 0px; word-wrap: break-word;">{{image.title}}</h2>
               <h1 class="creator" style="font-size: 12px;">by {{image.creator}}</h1>
               <canvas id="preview-{{loop.index-1}}"></canvas>
             </div>
