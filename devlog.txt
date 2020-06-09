@@ -87,3 +87,6 @@ logged in they will be redirected to the login page.
 Ethan Chen 2020-6-8 15:19
 -added likes and a like button to the homepage and view art page
 -joseph is not satisfied with the color scheme/am planning to experiment with different colors
+
+Joseph Yusufov 2020-06-09 11:00
+- Updated design document with SQL database design diagram
