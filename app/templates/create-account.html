@@ -37,9 +37,11 @@
             <br>
             </div>
             <br>
-            <input type="submit" class="button" value="Create Account"></input>
+            <input type="submit" class="button" value="Create Account" style="cursor: pointer">
             <br>
-            <a href="{{ url_for('login') }}"<button class="button">Sign In</button></a>
+            <a href="{{ url_for('login') }}" style="text-decoration: none; font-size: 15px; font-family: Verdana, Geneva, sans-serif; color: white">already have an account?</a>
+            <br>
+            <a href="{{ url_for('home') }}" style="text-decoration: none; font-size: 15px; font-family: Verdana, Geneva, sans-serif; color: white">continue as guest</a>
         </form>
         </div>
     </body>
