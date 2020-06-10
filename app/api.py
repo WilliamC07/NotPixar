@@ -1,4 +1,4 @@
-from flask import Blueprint, request, session
+from flask import Blueprint, request, session, flash, redirect, url_for
 from data import database_query
 
 api = Blueprint("api", __name__)
@@ -28,7 +28,8 @@ def api_comment_create():
 @api.route("/<string:id>/like", methods=["POST"])
 def api_image_like(id: str):
     if "username" not in session:
-        return "", 403
+        flash("Please login to like artwork", "danger")
+        return redirect('/login')
     if database_query.did_user_like(session["username"], id):
         # unlike
         database_query.unlike_artwork(id, session["username"])

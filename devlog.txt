@@ -94,3 +94,16 @@ Joseph Yusufov 2020-06-09 11:00
 William Cao 2020-06-09 13:01
 - Fixed import styling (issue #20)
 - Wrote backend code for viewing user's profile to see art work and wrote tests for this
+- Wrote launch codes
+
+Joseph Yusufov 2020-06-09 15:00
+- Implemented like button on view-art page.
+
+Ethan Chen 2020-06-09 15:02
+- Removed the like button if user is not in session
+- Added link to view artist profile on view art page
+- copied profile page from home page
+- added back to home on login system
+
+Joseph Yusufov 11:20
+- implemented homepage like buttons
