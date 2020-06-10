@@ -10,7 +10,29 @@ body {background-color: #2471A3 !important;}
 <script>
   const images = `{{images|tojson()}}`;
 </script>
+<script type="module" src='./static/js/home.js'></script>
+<script>
+  function like(index){
+    /* console.log(hasLikedLocal);
+    if(hasLikedLocal === 'False'){
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-primary');
+        counter.innerHTML = parseInt(counter.innerHTML + 1);
+        hasLikedLocal = "True";
+    } else {
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-outline-primary');
+        counter.innerHTML = parseInt(counter.innerHTML - 1);
+        hasLikedLocal = "False";
+    };
+    fetch(`/api/${id}/like`, {
+        method: "POST",
+    }).then(res => {
+        console.log(res);
+    }) */
+  };
 
+</script>
 <br>
 <br>
 <div style="text-align: center;">
@@ -26,19 +48,19 @@ body {background-color: #2471A3 !important;}
             <div style = "display:inline-block; width: 123px;">
                 <div style="text-align:left;">
                     <div style="display: inline-block;">
-                        <h1 style="font-size: 12px; color: #00000080;">{{likes}} Likes </h1>
+                        <h1 style="font-size: 12px; color: #00000080;"><span id="num-likes-{{loop.index-1}}">{{image.likes}}</span> Likes </h1>
                     </div>
                 </div>
             </div>
             <div style = "display: inline-block; width: 123px;">
                 <div style="text-align: right;">
                     <div style="display: inline-block;">
-                        <h1 style="font-size: 12px; color: #00000080;">{{comments}} Comments</h1>
+                        <h1 style="font-size: 12px; color: #00000080;"><span id="num-comments{{loop.index-1}}">{{image.num_comments}}</span> Comments</h1>
                     </div>
                 </div>
             </div>
             <div>
-              <button type="button" class="btn btn-outline-dark" style="width: 250px;">Like</button>
+              <button id="like-button-{{loop.index-1}}" type="button" class="btn btn-outline-danger" onclick="like({{image.art_id}})" style="width: 250px;">♥</button>
             </div>
           </div>
           {% endfor %}
@@ -52,5 +74,4 @@ body {background-color: #2471A3 !important;}
 </div>
 {% endif %}
 
-<script type="module" src='./static/js/home.js'></script>
 {% endblock %}

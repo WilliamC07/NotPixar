@@ -104,3 +104,6 @@ Ethan Chen 2020-06-09 15:02
 - Added link to view artist profile on view art page
 - copied profile page from home page
 - added back to home on login system
+
+Joseph Yusufov 11:20
+- implemented homepage like buttons

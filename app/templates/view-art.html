@@ -12,7 +12,7 @@ body {background-color: #E5E8E8;}
       <div style="display: inline-block; width: 650px; height:auto; background-color:white; padding:10px;">
           <h1 style="word-wrap: break-word;">{{title}}</h1>
           <div>
-              <button id="like" class="btn btn-outline-primary my-3">♥ <span id="likes-counter">{{likes}}</span></button>
+              <button id="like" class="btn btn-outline-danger my-3">♥ <span id="likes-counter">{{likes}}</span></button>
           </div>
           <canvas id="view-canvas" width="625" height="625"></canvas>
           <div>
@@ -22,7 +22,7 @@ body {background-color: #E5E8E8;}
           <div style="display: none;" class="alert alert-success" id="comment-alert" role="alert">Your comment has been shared.</div>
             <div id="comments-container">
                 {% for comment in comments %}
-                <div style="width: 625px; height: auto; text-align: left; margin: 5px;">
+                <div style="width: 625px; height: auto; text-align: left; margin: 5px; word-wrap: break-word;">
                     <b>{{comment['username']}}:</b> {{comment['content']}}
                 </div>
                 {% endfor %}

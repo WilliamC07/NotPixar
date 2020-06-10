@@ -77,21 +77,21 @@ const submit = () => {
 const id = window.location.pathname.split("/")[2];
 const button = document.getElementById('like');
 if (hasLikedLocal === "True"){
-    button.classList.remove('btn-outline-primary');
-    button.classList.add('btn-primary');
+    button.classList.remove('btn-outline-danger');
+    button.classList.add('btn-danger');
 }
 const counter = document.getElementById('likes-counter');
 const like = () => {
     console.log(hasLikedLocal);
     if(hasLikedLocal === 'False'){
-        button.classList.remove('btn-outline-primary');
-        button.classList.add('btn-primary');
-        counter.innerHTML = parseInt(counter.innerHTML + 1);
+        button.classList.remove('btn-outline-danger');
+        button.classList.add('btn-danger');
+        counter.innerHTML = (parseInt(counter.innerHTML) + 1);
         hasLikedLocal = "True";
     } else {
-        button.classList.remove('btn-primary');
-        button.classList.add('btn-outline-primary');
-        counter.innerHTML = parseInt(counter.innerHTML - 1);
+        button.classList.remove('btn-danger');
+        button.classList.add('btn-outline-danger');
+        counter.innerHTML = (parseInt(counter.innerHTML) - 1);
         hasLikedLocal = "False";
     };
     fetch(`/api/${id}/like`, {
