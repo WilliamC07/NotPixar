@@ -20,9 +20,6 @@
     .b5 {background: #E5E8E8; padding: 5px; height: 32px; border-radius: 5px; font-family: Verdana; width: 320px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid transparent;}
     </style>
     <body style="background: #5DADE2; margin: 0px;">
-        <div style="padding: 15px;">
-            <a href="{{ url_for('home') }}" style="text-decoration: none; font-size: 15px; color: #D6EAF8; font-family: Verdana, Geneva, sans-serif;">Back to Home</a>
-        </div>
         <div style="text-align: center;">
             <h1 style="color: #D6EAF8; font-family: Verdana, Geneva, sans-serif; font-size: 55px; margin: 85px;">not pixar</h1>
         </div>
@@ -38,6 +35,7 @@
             <input type="submit" class="button" value="Sign In"></input>
             <br>
             <a href="{{ url_for('create_account') }}" style="text-decoration: none;"><p style="font-family: Verdana, Geneva, sans-serif; margin: 5px; color: white;">need an account?</p></a>
+            <a href="{{ url_for('home') }}" style="text-decoration: none; font-size: 15px; font-family: Verdana, Geneva, sans-serif; color: white">Continue as guest</a>
         </form>
         </div>
     </body>

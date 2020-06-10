@@ -13,13 +13,23 @@ body {background-color: #E5E8E8;}
           <h1 style="word-wrap: break-word;">{{title}}</h1>
           <a href="/profile/{{creator}}"><h1 style="font-size: 18px; color: #00000080;">by {{creator}}</h1></a>
           <div>
-              <button id="like" class="btn btn-outline-danger my-3">♥ <span id="likes-counter">{{likes}}</span></button>
+              <button
+                      {% if "username" not in session %}
+                      hidden
+                      {% endif %}
+                      id="like" class="btn btn-outline-danger my-3">♥ <span id="likes-counter">{{likes}}</span></button>
           </div>
           <canvas id="view-canvas" width="625" height="625"></canvas>
           <div>
           </div>
-          <input class="b5" style="width: 85%; margin-top: 3px; margin-bottom: 5px; height: 38px;" type="text" name="comment" id="comment" placeholder="Write a comment...">
-          <button id="submit" class="btn btn-primary" style="margin-left: 10px; margin-bottom: 4px;">Submit</button>
+          <div
+            {% if "username" not in session %}
+                      hidden
+                      {% endif %}
+            >
+            <input class="b5" style="width: 85%; margin-top: 3px; margin-bottom: 5px; height: 38px;" type="text" name="comment" id="comment" placeholder="Write a comment...">
+            <button id="submit" class="btn btn-primary" style="margin-left: 10px; margin-bottom: 4px;">Submit</button>
+          </div>
           <div style="display: none;" class="alert alert-success" id="comment-alert" role="alert">Your comment has been shared.</div>
             <div id="comments-container">
                 {% for comment in comments %}
