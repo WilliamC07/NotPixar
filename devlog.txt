@@ -107,3 +107,7 @@ Ethan Chen 2020-06-09 15:02
 
 Joseph Yusufov 11:20
 - implemented homepage like buttons
+
+William Cao 14:58
+- Fixed bug where guest user cannot see art created
+- Added search for username in nav bar
