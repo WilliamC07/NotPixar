@@ -66,7 +66,7 @@ def create():
     if "username" in session:
         return render_template("create-art.html")
     else:
-        flash("Login or create an account to begin drawing", "success")
+        flash("Login or create an account to begin drawing", "danger")
         return redirect(url_for("login"))
 
 @app.route("/view-art/<string:id>", methods=["GET"])

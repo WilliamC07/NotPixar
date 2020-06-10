@@ -59,7 +59,7 @@ body {background-color: #2471A3 !important;}
                     </div>
                 </div>
             </div>
-            {% if 'username' not in session %}
+            {% if 'username' in session %}
             <div>
               <button id="like-button-{{loop.index-1}}" type="button" class="btn btn-outline-danger" onclick="like({{image.art_id}})" style="width: 250px;">♥</button>
             </div>
