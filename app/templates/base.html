@@ -31,6 +31,12 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('create') }}">Draw</a>
       </li>
+      <li>
+        <form class="form-inline">
+          <input id="username-input-field" class="form-control mr-sm-2" type="search" placeholder="username" aria-label="Search">
+          <button id="username-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search For User</button>
+        </form>
+      </li>
     </ul>
     {% if 'username' not in session %}
     <span class="navbar-text">
@@ -62,5 +68,7 @@
 {% endwith %}
 {% block body %}
 {% endblock %}
+
+<script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
 </body>
 </html>
