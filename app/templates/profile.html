@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="./static/css/homeStyles.css">
+<style>
+body {background-color: #2471A3 !important;}
+</style>
+{% endblock %}
+{% block title %} View Data {% endblock %}
+{% block body %}
+<script>
+  const images = `{{images|tojson()}}`;
+</script>
+<br>
+<div style="text-align: center;">
+    <div style="display:inline-block; padding: 50px; width: 70%; background-color: #B3C4CF; border-radius:5px;">
+        <h4 style="font-size: 50px; color: #5B2C6F;">{{username}}'s posts</h4>
+    </div>
+    <br>
+    <br>
+    <div style = "display: inline-block">
+        <div class="grid-container" style="grid-template-columns: 0fr 0fr 0fr;">
+          {% for image in images %}
+          <div style="background-color: #EAEDED; margin: 5px; border-radius: 5px; width: 280px; padding-bottom: 10px;">
+            <div class="image-container" id="image-container-{{loop.index-1}}" style="padding-bottom: 0px;">
+              <h2 style="color: black; margin-bottom: 0px;">{{image.title}}</h2>
+              <h1 class="creator" style="font-size: 12px;">by {{image.creator}}</h1>
+              <canvas id="preview-{{loop.index-1}}"></canvas>
+            </div>
+            <div style = "display:inline-block; width: 123px;">
+                <div style="text-align:left;">
+                    <div style="display: inline-block;">
+                        <h1 style="font-size: 12px; color: #00000080;">{{image.likes}} Likes </h1>
+                    </div>
+                </div>
+            </div>
+            <div style = "display: inline-block; width: 123px;">
+                <div style="text-align: right;">
+                    <div style="display: inline-block;">
+                        <h1 style="font-size: 12px; color: #00000080;">{{image.num_comments}} Comments</h1>
+                    </div>
+                </div>
+            </div>
+            {% if 'username' not in session %}
+            <div>
+              <button type="button" class="btn btn-outline-dark" style="width: 250px;">Like</button>
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+</div>
+{% if images|length == 0 %}
+<div class="text-center">
+  <h1>There's currently no artwork to display &#x1F97A</h1>
+  <a href="/create-art"><h3>Click to Start Drawing</h3></a>
+</div>
+{% endif %}
+
+<script type="module" src='./static/js/home.js'></script>
+{% endblock %}
