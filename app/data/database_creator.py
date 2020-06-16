@@ -1,4 +1,4 @@
-from data import cursor, table_names
+from data import cursor, table_names, connection
 
 def create_users_table():
     cursor.execute('''
@@ -54,6 +54,7 @@ def recreate_database():
     for table_name in table_names:
         cursor.execute(statement + table_name)
 
+    print("asdasdkmaksmdaksmdkasm")
     # recreate the tables
     create_users_table()
     create_art_table()
@@ -61,3 +62,4 @@ def recreate_database():
     create_like_table()
 
     create_admin_account()
+    connection.commit()
